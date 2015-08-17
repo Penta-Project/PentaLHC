@@ -1,0 +1,2 @@
+debian/bin/pentaquarkd usr/bin
+src/pentaquarkd usr/lib/pentaquark
