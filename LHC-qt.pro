@@ -1,7 +1,7 @@
 # Pentaquark (The CryptoCurrency in Business) Version
 TEMPLATE = app
 TARGET = Pentaquark-qt
-VERSION = 1.0.0-Beta
+VERSION = 1.0.1-Beta
 INCLUDEPATH += src src/json src/qt src/tor
 QT += core gui network
 DEFINES += ENABLE_TRADE_REQUIRE_QT5

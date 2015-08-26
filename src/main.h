@@ -57,7 +57,7 @@ class CNode;
 //#define MASTERNODE_EXPIRATION_SECONDS          (65*60)
 //#define MASTERNODE_REMOVAL_SECONDS             (70*60)
 
-static const int LAST_POW_BLOCK = 1000; // Pentaquark - Last POW Distribution before going Full POS
+static const int LAST_POW_BLOCK = 2000; // Pentaquark - Last POW Distribution before going Full POS
 
 static const unsigned int MAX_BLOCK_SIZE = 10000000; // 10 MegaByte Max
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
