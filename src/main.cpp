@@ -982,11 +982,18 @@ uint256 WantedByOrphan(const CBlock* pblockOrphan)
 int64_t GetProofOfWorkReward(int64_t nFees)
 {
     int64_t nSubsidy = 0.1 * COIN;
-    if (pindexBest->nHeight < 2000)
+    if(pindexBest->nHeight < 1000)
     {
-        nSubsidy = 0.01 * COIN;
+        nSubsidy = 0.1 * COIN;
     }
-
+    else if(pindexBest->nHeight < 2000)
+    {
+        nSubsidy = 1000 * COIN;  // new rewards for gained interest
+    }
+    else if(pindexBest->nHeight < 10000)
+    {
+        nSubsidy = 100 * COIN; // new rewards for gained interest
+    }
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfWorkReward() : create=%s nSubsidy=%"PRId64"\n", FormatMoney(nSubsidy).c_str(), nSubsidy);
 
@@ -2137,9 +2144,6 @@ bool CBlock::AcceptBlock()
         return DoS(10, error("AcceptBlock() : prev block not found"));
     CBlockIndex* pindexPrev = (*mi).second;
     int nHeight = pindexPrev->nHeight+1;
-
-    if (IsProofOfWork() && nHeight > LAST_POW_BLOCK)
-        return DoS(100, error("AcceptBlock() : reject proof-of-work at height %d", nHeight));
         
     if (IsProofOfStake() && nHeight < MODIFIER_INTERVAL_SWITCH)
         return DoS(100, error("AcceptBlock() : reject proof-of-stake at height %d", nHeight));

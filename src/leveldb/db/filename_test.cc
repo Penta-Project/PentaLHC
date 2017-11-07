@@ -58,7 +58,7 @@ TEST(FileNameTest, Parse) {
     "MANIFEST-",
     "XMANIFEST-3",
     "MANIFEST-3x",
-    "LOC",
+    "BRA",
     "LOCKx",
     "LO",
     "LOGx",

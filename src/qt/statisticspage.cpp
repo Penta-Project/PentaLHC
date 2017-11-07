@@ -57,11 +57,11 @@ void StatisticsPage::updateStatistics()
     {
         phase = "Proof of Work";
     }
-    else if (pindexBest->nHeight < 2000)
+    else if (pindexBest->nHeight < 1000)
     {
         phase = "Proof Of Work & Proof of Stake";
     }
-    else if (pindexBest->nHeight > 2001)
+    else if (pindexBest->nHeight > 1001)
     {
         phase = "Proof of Stake";
     }
