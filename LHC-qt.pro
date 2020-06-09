@@ -1,11 +1,11 @@
-# Pentaquark (The CryptoCurrency in Business) Version
+# Pentaquark
 TEMPLATE = app
-TARGET = Pentaquark-qt
-VERSION = 1.5
+TARGET = Pentaquark
+VERSION = 1.6.0.0
 INCLUDEPATH += src src/json src/qt src/tor
-QT += core gui network
-DEFINES += ENABLE_TRADE_REQUIRE_QT5
-DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
+QT += core gui network printsupport
+DEFINES += ENABLE_WALLET
+DEFINES += BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
 CONFIG += no_include_pwd
 CONFIG += thread
 CONFIG += static
@@ -13,6 +13,16 @@ CONFIG += static
 CONFIG += openssl-linked
 CONFIG += openssl
 #endif
+
+greaterThan(QT_MAJOR_VERSION, 4) {
+    QT += widgets
+    DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0
+}
+
+linux {
+    SECP256K1_LIB_PATH=/usr/local/lib
+    SECP256K1_INCLUDE_PATH=/usr/local/include
+}
 
 QMAKE_CXXFLAGS = -fpermissive
 
@@ -27,9 +37,13 @@ greaterThan(QT_MAJOR_VERSION, 4) {
 # use: BOOST_THREAD_LIB_SUFFIX=_win32-...
 # or when linking against a specific BerkelyDB version: BDB_LIB_SUFFIX=-4.8
 
+# workaround for boost 1.58
+DEFINES += BOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT
+
 # Dependency library locations can be customized with:
 #    BOOST_INCLUDE_PATH, BOOST_LIB_PATH, BDB_INCLUDE_PATH,
 #    BDB_LIB_PATH, OPENSSL_INCLUDE_PATH and OPENSSL_LIB_PATH respectively
+
 
 OBJECTS_DIR = build
 MOC_DIR = build
