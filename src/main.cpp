@@ -46,7 +46,7 @@ static const int64_t nTargetTimespan = 12 * 60;  // 12 minutes
 
 unsigned int nTargetSpacing = 3 * 60; // 3 minutes
 unsigned int nStakeMinAge = 1 * 60 * 60; // 1 Hour
-unsigned int nStakeMaxAge = 2 * 24 * 60 * 60; // 2 days
+unsigned int nStakeMaxAge = 21 * 24 * 60 * 60; // 21 days
 unsigned int nModifierInterval = 6 * 60; // 6 minutes
 
 int nCoinbaseMaturity = 15;
