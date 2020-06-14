@@ -5,7 +5,6 @@
 #include <QSystemTrayIcon>
 
 #include <stdint.h>
-//#include "radio.h"
 
 class TransactionTableModel;
 class ClientModel;
@@ -73,7 +72,6 @@ private:
 #ifdef ENABLE_TRADE_REQUIRE_QT5
     tradingDialog *tradingDialogPage;
 #endif
-//    Radio *radioPage;
     QWidget *transactionsPage;
     AddressBookPage *addressBookPage;
     AddressBookPage *receiveCoinsPage;
@@ -94,7 +92,6 @@ private:
 #ifdef ENABLE_TRADE_REQUIRE_QT5
     QAction *TradingAction;
 #endif
-//    QAction *radioAction;
     QAction *historyAction;
     QAction *quitAction;
     QAction *sendCoinsAction;
@@ -168,8 +165,6 @@ private slots:
     /** Switch to trading page */
     void gotoTradingPage();
 #endif
- //   /** Switch to send radio page */
- //   void gotoRadioPage();
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
     /** Switch to address book page */

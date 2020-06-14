@@ -22,7 +22,6 @@
 #ifdef ENABLE_TRADE_REQUIRE_QT5
 #include "tradingdialog.h"
 #endif
-//#include "radio.h"
 #include "bitcoinunits.h"
 #include "guiconstants.h"
 #include "askpassphrasedialog.h"
@@ -117,7 +116,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     tradingDialogPage = new tradingDialog(this);
     tradingDialogPage->setObjectName("tradingDialog");
 #endif
-//    radioPage = new Radio(this);
 
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
@@ -140,7 +138,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 #ifdef ENABLE_TRADE_REQUIRE_QT5
     centralWidget->addWidget(tradingDialogPage);
 #endif
-//    centralWidget->addWidget(radioPage);
     centralWidget->addWidget(transactionsPage);
     centralWidget->addWidget(addressBookPage);
     centralWidget->addWidget(receiveCoinsPage);
@@ -244,12 +241,6 @@ void BitcoinGUI::createActions()
     TradingAction->setProperty("objectName","TradingAction");
     tabGroup->addAction(TradingAction);
 #endif
-
-//    radioAction = new QAction(tr("&Radio"), this);
-//    radioAction->setToolTip(tr("Hip Hop Radio"));
-//    radioAction->setCheckable(true);
-//    radioAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
-//    tabGroup->addAction(radioAction);
     
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send coins"), this);
     sendCoinsAction->setToolTip(tr("Send coins to a Pentaquark address"));
@@ -288,8 +279,6 @@ void BitcoinGUI::createActions()
 #ifdef ENABLE_TRADE_REQUIRE_QT5
     connect(TradingAction, SIGNAL(triggered()), this, SLOT(gotoTradingPage()));
 #endif
-//    connect(radioAction, SIGNAL(triggered()), this, SLOT(gotoRadioPage()));
-//    connect(radioAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(gotoSendCoinsPage()));
     connect(receiveCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -397,7 +386,6 @@ void BitcoinGUI::createToolBars()
 #ifdef ENABLE_TRADE_REQUIRE_QT5
     toolbar->addAction(TradingAction);
 #endif
-//    toolbar->addAction(radioAction);
     toolbar->addAction(sendCoinsAction);
     toolbar->addAction(receiveCoinsAction);
     toolbar->addAction(historyAction);
@@ -794,15 +782,6 @@ void BitcoinGUI::gotoTradingPage()
   //  disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
 #endif
-
-//void BitcoinGUI::gotoRadioPage()
-//{
-//    radioAction->setChecked(true);
-//    centralWidget->setCurrentWidget(radioPage);
-
-//    exportAction->setEnabled(false);
-//    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-//}
 
 void BitcoinGUI::gotoHistoryPage()
 {
