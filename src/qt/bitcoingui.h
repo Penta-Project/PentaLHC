@@ -14,7 +14,6 @@ class TransactionView;
 class OverviewPage;
 class StatisticsPage;
 class BlockBrowser;
-class ChatWindow;
 class AddressBookPage;
 class SendCoinsDialog;
 class SignVerifyMessageDialog;
@@ -71,7 +70,6 @@ private:
     OverviewPage *overviewPage;
     StatisticsPage *statisticsPage;
     BlockBrowser *blockBrowser;
-    ChatWindow *chatWindow;
 #ifdef ENABLE_TRADE_REQUIRE_QT5
     tradingDialog *tradingDialogPage;
 #endif
@@ -93,7 +91,6 @@ private:
     QAction *overviewAction;
     QAction *statisticsAction;
     QAction *blockAction;
-    QAction *chatAction;
 #ifdef ENABLE_TRADE_REQUIRE_QT5
     QAction *TradingAction;
 #endif
@@ -167,8 +164,6 @@ private slots:
     void gotoStatisticsPage();
     /** Switch to block explorer*/
     void gotoBlockBrowser();
-    /** Switch to chat page*/
-    void gotoChatPage();
 #ifdef ENABLE_TRADE_REQUIRE_QT5
     /** Switch to trading page */
     void gotoTradingPage();

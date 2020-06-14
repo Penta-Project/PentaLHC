@@ -229,7 +229,6 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/statisticspage.h \
     src/qt/blockbrowser.h \
     src/qt/serveur.h \
-    src/qt/chatwindow.h \
 #ifdef ENABLE_TRADE_REQUIRE_QT5
     src/qt/tradingdialog.h \
 #endif
@@ -303,7 +302,6 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/statisticspage.cpp \
     src/qt/blockbrowser.cpp \
     src/qt/serveur.cpp \
-    src/qt/chatwindow.cpp \
 #ifdef ENABLE_TRADE_REQUIRE_QT5
     src/qt/tradingdialog.cpp \
 #endif
@@ -354,7 +352,6 @@ FORMS += \
     src/qt/forms/askpassphrasedialog.ui \
     src/qt/forms/rpcconsole.ui \
     src/qt/forms/optionsdialog.ui \
-    src/qt/forms/chatwindow.ui \
 #ifdef ENABLE_TRADE_REQUIRE_QT5
     src/qt/forms/tradingdialog.ui
 #endif

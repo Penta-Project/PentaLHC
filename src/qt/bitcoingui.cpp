@@ -19,7 +19,6 @@
 #include "overviewpage.h"
 #include "statisticspage.h"
 #include "blockbrowser.h"
-#include "chatwindow.h"
 #ifdef ENABLE_TRADE_REQUIRE_QT5
 #include "tradingdialog.h"
 #endif
@@ -114,7 +113,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     overviewPage = new OverviewPage();
     statisticsPage = new StatisticsPage(this);
     blockBrowser = new BlockBrowser(this);
-    chatWindow = new ChatWindow(this);
 #ifdef ENABLE_TRADE_REQUIRE_QT5
     tradingDialogPage = new tradingDialog(this);
     tradingDialogPage->setObjectName("tradingDialog");
@@ -139,7 +137,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralWidget->addWidget(overviewPage);
     centralWidget->addWidget(statisticsPage);
     centralWidget->addWidget(blockBrowser);
-    centralWidget->addWidget(chatWindow);
 #ifdef ENABLE_TRADE_REQUIRE_QT5
     centralWidget->addWidget(tradingDialogPage);
 #endif
@@ -239,11 +236,6 @@ void BitcoinGUI::createActions()
     blockAction->setCheckable(true);
     tabGroup->addAction(blockAction);
 
-    chatAction = new QAction(QIcon(":/icons/social"), tr("&Social"), this);
-    chatAction->setToolTip(tr("View chat"));
-    chatAction->setCheckable(true);
-    tabGroup->addAction(chatAction);
-
 #ifdef ENABLE_TRADE_REQUIRE_QT5
     TradingAction = new QAction(tr("&Trade"), this);
     TradingAction ->setToolTip(tr("Start Trading"));
@@ -293,7 +285,6 @@ void BitcoinGUI::createActions()
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
     connect(statisticsAction, SIGNAL(triggered()), this, SLOT(gotoStatisticsPage()));
     connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));
-    connect(chatAction, SIGNAL(triggered()), this, SLOT(gotoChatPage()));
 #ifdef ENABLE_TRADE_REQUIRE_QT5
     connect(TradingAction, SIGNAL(triggered()), this, SLOT(gotoTradingPage()));
 #endif
@@ -403,7 +394,6 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(overviewAction);
     toolbar->addAction(statisticsAction);
     toolbar->addAction(blockAction);
-    toolbar->addAction(chatAction);
 #ifdef ENABLE_TRADE_REQUIRE_QT5
     toolbar->addAction(TradingAction);
 #endif
@@ -475,7 +465,6 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
 
         statisticsPage->setModel(clientModel);
         blockBrowser->setModel(clientModel);
-        chatWindow->setModel(clientModel);
 
         setEncryptionStatus(walletModel->getEncryptionStatus());
         connect(walletModel, SIGNAL(encryptionStatusChanged(int)), this, SLOT(setEncryptionStatus(int)));
@@ -789,15 +778,6 @@ void BitcoinGUI::gotoBlockBrowser()
 {
     blockAction->setChecked(true);
     centralWidget->setCurrentWidget(blockBrowser);
-
-    exportAction->setEnabled(false);
-    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-}
-
-void BitcoinGUI::gotoChatPage()
-{
-    chatAction->setChecked(true);
-    centralWidget->setCurrentWidget(chatWindow);
 
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
