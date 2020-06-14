@@ -16,7 +16,7 @@
 using namespace std;
 
 unsigned int nStakeSplitAge = 1 * 24 * 60 * 60;
-int64_t nStakeCombineThreshold = 10000 * COIN;
+int64_t nStakeCombineThreshold = 1000 * COIN; // Lowered from 10,000 * COIN to 1,000 * COIN;
 
 //////////////////////////////////////////////////////////////////////////////
 //
