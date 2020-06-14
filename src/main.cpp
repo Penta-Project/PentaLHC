@@ -988,11 +988,11 @@ int64_t GetProofOfWorkReward(int64_t nFees)
     }
     else if(pindexBest->nHeight < 2000)
     {
-        nSubsidy = 1000 * COIN;  // new rewards for gained interest
+        nSubsidy = 10 * COIN;  // new rewards for gained interest
     }
-    else if(pindexBest->nHeight < 10000)
+    else if(pindexBest->nHeight < 100000)
     {
-        nSubsidy = 100 * COIN; // new rewards for gained interest
+        nSubsidy = 1 * COIN; // new rewards for gained interest
     }
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfWorkReward() : create=%s nSubsidy=%"PRId64"\n", FormatMoney(nSubsidy).c_str(), nSubsidy);
@@ -1008,27 +1008,27 @@ int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees)
 
     // proof of stake rewards. POS begins at block 100
     
-    int64_t nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 8);  //100% yearly interest 
+    int64_t nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 8);
 
     if(pindexBest->nHeight < 1000)
     {
         nSubsidy = 0 * COIN;  // 0
     }
-    else if(pindexBest->nHeight < 10000)
+    else if(pindexBest->nHeight < 1003)
     {
-        nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 7);  //1000% yearly interest
+        nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 7); // Last PoS Block before chain stuck
+    }
+    else if(pindexBest->nHeight < 2000)
+    {
+        nSubsidy = 10 * COIN; // Set to match Proof Of Work Rewards
     }
     else if(pindexBest->nHeight < 100000)
     {
-        nSubsidy = 2 * COIN; // 
-    }
-    else if(pindexBest->nHeight < 1000000)
-    {
-        nSubsidy = 1 * COIN; // 
+        nSubsidy = 1 * COIN; // Set to match Proof Of Work Rewards
     }
     else
     {   
-        nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 7);  //1000% yearly interest
+        nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 8);
     }
     
     if (fDebug && GetBoolArg("-printcreation"))
