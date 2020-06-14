@@ -4,7 +4,7 @@ PentaLHC
 
 # READ ME!!! 
 
-Please make sure you are running the latest version of PentaLHC Version v1.6 L.H.C
+Please make sure you are running the latest version of PentaLHC Version v1.6.1.0 L.H.C
 
 
 # General Build Information
